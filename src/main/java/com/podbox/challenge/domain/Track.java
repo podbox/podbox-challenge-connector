@@ -1,14 +1,23 @@
 package com.podbox.challenge.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Track {
 
-    public final Integer rank;
+    @JacksonXmlProperty(localName = "rank_this_week")
+    public Integer rank;
 
-    public final String title;
+    @JacksonXmlProperty(localName = "chart_item_title")
+    public String title;
 
-    public final String artist;
+    public String artist;
 
-    public final String spotifyUri;
+    public String spotifyUri;
+
+    public Track() {
+    }
 
     public Track(Integer rank, String title, String artist) {
         this(rank, title, artist, null);
